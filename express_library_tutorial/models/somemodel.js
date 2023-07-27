@@ -11,4 +11,4 @@ const SomeModelSchema = new Schema({
 
 // create model
 
-const SomeModel = mongoose.model('SomeModel', SomeModelSchema);
+module.exports = mongoose.model('SomeModel', SomeModelSchema);
