@@ -1,0 +1,20 @@
+{
+  "name": "mdn_express_library_tutorial",
+  "version": "1.0.0",
+  "description": "https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/skeleton_website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JustWaveThings/MDN_express_library_tutorial.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JustWaveThings/MDN_express_library_tutorial/issues"
+  },
+  "homepage": "https://github.com/JustWaveThings/MDN_express_library_tutorial#readme"
+}
