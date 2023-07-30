@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/JustWaveThings/MDN_express_library_tutorial/issues"
   },
-  "homepage": "https://github.com/JustWaveThings/MDN_express_library_tutorial#readme"
+  "homepage": "https://github.com/JustWaveThings/MDN_express_library_tutorial#readme",
+  "dependencies": {
+    "express-async-handler": "^1.2.0"
+  }
 }
