@@ -1,14 +1,9 @@
 var express = require('express');
 var router = express.Router();
+const book_controller = require('../controllers/bookController');
 
 /* GET home page. */
 
-router.get('/', function (req, res, next) {
-  res.redirect('/catalog');
-  next();
-});
-router.get('/catalog', function (req, res) {
-  res.render('index', { title: 'Local Library Home' });
-});
+router.get('/', book_controller.index);
 
 module.exports = router;
