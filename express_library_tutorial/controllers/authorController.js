@@ -145,9 +145,18 @@ exports.author_delete_post = asyncHandler( async (req, res, next) => {
 });
 
 // Display Author update form on GET.
-exports.author_update_get = (req, res, next) => {
-  res.send('NOT IMPLEMENTED: Author update GET');
-};
+exports.author_update_get = asyncHandler( async(req, res, next) => {
+  const author = await Author.findById(req.params.id).exec();
+  console.log(author)
+  if (author == null) {
+    const err = new Error("Author not found");
+    err.status = 404;
+    return next(err);
+  }
+  res.render("layout", { title: "Update Author", author, partial: "author_form" })
+  
+});
+
 
 // Handle Author update on POST.
 exports.author_update_post = (req, res, next) => {
