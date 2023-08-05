@@ -41,10 +41,10 @@
 </form>
 
 
-<% if (errors) { %>
-    <ul>
-        <% for (let error of errors) { %>
-            <li> <%= error.msg %> </li>
-        <% } %>
-    </ul>
+<% if (typeof errors !== 'undefined') { %>
+  <ul>
+    <% for (let error of errors) { %>
+      <li><%= error.msg %></li>
+    <% } %>
+  </ul>
 <% } %>
