@@ -1,8 +1,6 @@
 #! /usr/bin/env node
 require('dotenv').config();
-console.log(
-  'This script populates some test books, authors, genres and bookinstances to your database. Specified database as argument - e.g.: node populatedb "mongodb+srv://cooluser:coolpassword@cluster0.lz91hw2.mongodb.net/local_library?retryWrites=true&w=majority"'
-);
+
 
 const Book = require('./models/book');
 const Author = require('./models/author');
@@ -22,14 +20,14 @@ const mongoDB = `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB
 main().catch(err => console.log(err));
 
 async function main() {
-  console.log('Debug: About to connect');
+ 
   await mongoose.connect(mongoDB);
-  console.log('Debug: Should be connected?');
+
   await createGenres();
   await createAuthors();
   await createBooks();
   await createBookInstances();
-  console.log('Debug: Closing mongoose');
+
   mongoose.connection.close();
 }
 
@@ -40,7 +38,7 @@ async function genreCreate(index, name) {
   const genre = new Genre({ name: name });
   await genre.save();
   genres[index] = genre;
-  console.log(`Added genre: ${name}`);
+
 }
 
 async function authorCreate(index, first_name, family_name, d_birth, d_death) {
@@ -52,7 +50,7 @@ async function authorCreate(index, first_name, family_name, d_birth, d_death) {
 
   await author.save();
   authors[index] = author;
-  console.log(`Added author: ${first_name} ${family_name}`);
+  
 }
 
 async function bookCreate(index, title, summary, isbn, author, genre) {
@@ -67,7 +65,7 @@ async function bookCreate(index, title, summary, isbn, author, genre) {
   const book = new Book(bookdetail);
   await book.save();
   books[index] = book;
-  console.log(`Added book: ${title}`);
+
 }
 
 async function bookInstanceCreate(index, book, imprint, due_back, status) {
@@ -81,16 +79,16 @@ async function bookInstanceCreate(index, book, imprint, due_back, status) {
   const bookinstance = new BookInstance(bookinstancedetail);
   await bookinstance.save();
   bookinstances[index] = bookinstance;
-  console.log(`Added bookinstance: ${imprint}`);
+  
 }
 
 async function createGenres() {
-  console.log('Adding genres');
+  
   await Promise.all([genreCreate(0, 'Fantasy'), genreCreate(1, 'Science Fiction'), genreCreate(2, 'French Poetry')]);
 }
 
 async function createAuthors() {
-  console.log('Adding authors');
+
   await Promise.all([
     authorCreate(0, 'Patrick', 'Rothfuss', '1973-06-06', false),
     authorCreate(1, 'Ben', 'Bova', '1932-11-8', false),
@@ -101,7 +99,7 @@ async function createAuthors() {
 }
 
 async function createBooks() {
-  console.log('Adding Books');
+
   await Promise.all([
     bookCreate(
       0,
@@ -149,7 +147,7 @@ async function createBooks() {
 }
 
 async function createBookInstances() {
-  console.log('Adding authors');
+
   await Promise.all([
     bookInstanceCreate(0, books[0], 'London Gollancz, 2014.', false, 'Available'),
     bookInstanceCreate(1, books[1], ' Gollancz, 2011.', false, 'Loaned'),
